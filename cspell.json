@@ -1,0 +1,26 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+  "words": [
+    "yourappname",
+    "yourappdomain",
+    "itsithu",
+    "Linecap",
+    "corentints",
+    "Linejoin",
+    "lucide",
+    "nowrap",
+    "oslojs",
+    "presigner",
+    "rmiz",
+    "signup",
+    "sonner",
+    "srvx",
+    "stylesheet",
+    "svix",
+    "tanstack",
+    "indieship",
+    "vite",
+    "webp"
+  ]
+}
