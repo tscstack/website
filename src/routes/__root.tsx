@@ -9,9 +9,8 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
-import { ClerkProvider, useAuth } from "@clerk/tanstack-react-start";
 import { ConvexQueryClient } from "@convex-dev/react-query";
-import { ConvexProviderWithClerk } from "convex/react-clerk";
+import { ConvexProvider } from "convex/react";
 
 import { ErrorComponent } from "~/components/error-component";
 import { NotFoundComponent } from "~/components/not-found-component";
@@ -36,6 +35,12 @@ export const Route = createRootRouteWithContext<{
         type: "image/png",
         href: "/favicon-96x96.png",
         sizes: "96x96"
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        href: "/favicon-192x192.png",
+        sizes: "192x192"
       },
       {
         rel: "icon",
@@ -73,24 +78,17 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <ClerkProvider
-          publishableKey={import.meta.env.VITE_CLERK_PUBLISHABLE_KEY}
-        >
-          <ConvexProviderWithClerk
-            client={convexQueryClient.convexClient}
-            useAuth={useAuth}
+        <ConvexProvider client={convexQueryClient.convexClient}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
           >
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
-              <Toaster />
-              {children}
-            </ThemeProvider>
-          </ConvexProviderWithClerk>
-        </ClerkProvider>
+            <Toaster />
+            {children}
+          </ThemeProvider>
+        </ConvexProvider>
 
         <TanStackDevtools
           config={{
