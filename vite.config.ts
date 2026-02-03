@@ -29,7 +29,7 @@ const config = defineConfig({
       },
       sitemap: {
         enabled: false,
-        host: "yourappdomain"
+        host: "indieship.xyz"
       }
     }),
     viteReact()

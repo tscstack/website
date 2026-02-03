@@ -2,4 +2,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: yourappdomain/sitemap.xml
+Sitemap: indieship.xyz/sitemap.xml
