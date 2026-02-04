@@ -10,6 +10,7 @@ import {
   Rocket,
   Shield,
   Sparkles,
+  Wrench,
   Zap
 } from "lucide-react";
 
@@ -34,38 +35,39 @@ export const Route = createFileRoute("/")({
 const features = [
   {
     icon: Code2,
-    title: "TanStack Start",
-    description:
-      "Modern React framework with file-based routing, SSR, and streaming built-in."
+    title: "TanStack Ecosystem"
   },
   {
     icon: Database,
-    title: "Convex Backend",
-    description: "Realtime database with automatic sync. No API routes needed."
+    title: "Convex Integration"
   },
   {
     icon: Lock,
-    title: "Clerk Auth",
-    description:
-      "Production-ready authentication with social logins, MFA, and user management."
+    title: "Clerk Auth"
+  },
+  {
+    icon: Rocket,
+    title: "Payment Integration"
+  },
+  {
+    icon: Sparkles,
+    title: "SEO optimization"
+  },
+  {
+    icon: Wrench,
+    title: "Utilities"
   },
   {
     icon: Shield,
-    title: "Type Safe",
-    description:
-      "Strict TypeScript throughout. End-to-end type safety with zero config."
+    title: "Fully Type Safe"
   },
   {
     icon: Zap,
-    title: "Instant Deploy",
-    description:
-      "Deploy to Netlify in seconds. Edge-ready with zero cold starts."
+    title: "Instant Deploy"
   },
   {
     icon: Gauge,
-    title: "Performance First",
-    description:
-      "Optimized bundles, lazy loading, and streaming for blazing fast apps."
+    title: "Performance First"
   }
 ];
 
@@ -87,6 +89,7 @@ const pricingPlan = {
     "Auth with Clerk",
     "Payment integration",
     "SEO optimization",
+    "Utilities",
     "Discord community",
     "Priority support"
   ],
@@ -97,7 +100,7 @@ const faqs = [
   {
     question: "What's included in the boilerplate?",
     answer:
-      "Everything you need to ship: TanStack Start setup, Convex database integration, Clerk authentication, payment integration, shadcn/ui components, SEO optimization. Just clone and start building."
+      "Everything you need to ship: TanStack Ecosystem setup, Convex integration, Clerk authentication, payment integration, shadcn/ui components, SEO optimization and useful utilities. Just clone and start building."
   },
   {
     question: "Why headless, not complete?",
@@ -112,7 +115,7 @@ const faqs = [
   {
     question: "Is IndieShip only for indie hackers?",
     answer:
-      "No! IndieShip is for anyone building a web application. Whether you're a solo founder, a small team, or a large organization, IndieShip has something for you."
+      "No! IndieShip is for anyone building a web application. Whether you're a solo founder, a small team, or a large organization, IndieShip provides the foundation you need."
   },
   {
     question: "Is IndieShip better than other boilerplates?",
@@ -228,12 +231,11 @@ function LandingPage() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (
               <Card key={feature.title} className="group">
-                <CardHeader>
-                  <div className="flex size-10 items-center justify-center rounded-lg bg-primary/10 mb-4">
+                <CardHeader className="flex gap-2 items-center">
+                  <div className="flex size-10 items-center justify-center rounded-lg bg-primary/10">
                     <feature.icon className="size-5 text-primary" />
                   </div>
-                  <CardTitle>{feature.title}</CardTitle>
-                  <CardDescription>{feature.description}</CardDescription>
+                  <CardDescription>{feature.title}</CardDescription>
                 </CardHeader>
               </Card>
             ))}
