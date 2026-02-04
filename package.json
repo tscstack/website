@@ -8,6 +8,7 @@
     "dash:convex": "convex dashboard",
     "deploy:dev": "netlify deploy",
     "deploy:prod": "netlify deploy --prod",
+    "deploy:convex": "convex deploy",
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run",

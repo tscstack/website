@@ -1,19 +1,350 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+
+import {
+  ArrowRight,
+  Check,
+  Code2,
+  Database,
+  Gauge,
+  Lock,
+  Rocket,
+  Shield,
+  Sparkles,
+  Zap
+} from "lucide-react";
 
 import { BuiltWithIndieShip } from "~/components/built-with-indie-ship";
+import { Button } from "~/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle
+} from "~/components/ui/card";
 import { seoMeta } from "~/utils/seo";
 
 export const Route = createFileRoute("/")({
-  component: App,
+  component: LandingPage,
   head: ({ match }) => ({
-    meta: seoMeta({ title: "default", url: match.fullPath })
+    meta: seoMeta({ title: "Ship SaaS Faster", url: match.fullPath })
   })
 });
 
-function App() {
+const features = [
+  {
+    icon: Code2,
+    title: "TanStack Start",
+    description:
+      "Modern React framework with file-based routing, SSR, and streaming built-in."
+  },
+  {
+    icon: Database,
+    title: "Convex Backend",
+    description: "Realtime database with automatic sync. No API routes needed."
+  },
+  {
+    icon: Lock,
+    title: "Clerk Auth",
+    description:
+      "Production-ready authentication with social logins, MFA, and user management."
+  },
+  {
+    icon: Shield,
+    title: "Type Safe",
+    description:
+      "Strict TypeScript throughout. End-to-end type safety with zero config."
+  },
+  {
+    icon: Zap,
+    title: "Instant Deploy",
+    description:
+      "Deploy to Netlify in seconds. Edge-ready with zero cold starts."
+  },
+  {
+    icon: Gauge,
+    title: "Performance First",
+    description:
+      "Optimized bundles, lazy loading, and streaming for blazing fast apps."
+  }
+];
+
+const benefits = [
+  "Focus on features, not infrastructure",
+  "Production-ready from day one",
+  "Regular updates and improvements"
+];
+
+const pricingPlan = {
+  name: "IndieShip",
+  originalPrice: "$79",
+  price: "$20",
+  description: "Early bird pricing. Lifetime access.",
+  features: [
+    "Full source code access",
+    "Lifetime updates",
+    "Convex integration",
+    "Auth with Clerk",
+    "Payment integration",
+    "SEO optimization",
+    "Discord community",
+    "Priority support"
+  ],
+  cta: "Get IndieShip"
+};
+
+const faqs = [
+  {
+    question: "What's included in the boilerplate?",
+    answer:
+      "Everything you need to ship: TanStack Start setup, Convex database integration, Clerk authentication, shadcn/ui components, Tailwind CSS, and a complete landing page. Just clone and start building."
+  },
+  {
+    question: "Can I use this for commercial projects?",
+    answer:
+      "Absolutely. Once you purchase, you can use the boilerplate for unlimited commercial projects. No attribution required."
+  },
+  {
+    question: "How often is it updated?",
+    answer:
+      "We update dependencies weekly and add new features monthly. You'll get lifetime access to all updates."
+  },
+  {
+    question: "Do I need to know TanStack or Convex?",
+    answer:
+      "Basic React knowledge is enough. Our docs and examples will get you up to speed quickly. Most developers are productive within an hour."
+  },
+  {
+    question: "What if I get stuck?",
+    answer:
+      "We have comprehensive docs, video tutorials, and a supportive Discord community. Pro and Team plans include priority support."
+  }
+];
+
+function LandingPage() {
   return (
-    <p>
-      This is index page <BuiltWithIndieShip />
-    </p>
+    <div className="min-h-screen bg-background">
+      {/* Navbar */}
+      <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+          <Link to="/" className="flex items-center gap-2 font-bold text-xl">
+            <img src="/indieship-logo.png" className="w-30" alt="IndieShip" />
+          </Link>
+          <nav className="hidden md:flex items-center gap-8">
+            <a
+              href="#features"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Features
+            </a>
+            <a
+              href="#pricing"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Pricing
+            </a>
+            <a
+              href="#faq"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              FAQ
+            </a>
+          </nav>
+          <div className="flex items-center gap-4">
+            <Button variant="ghost" size="sm" asChild>
+              <a href="https://github.com">Docs</a>
+            </Button>
+            <Button size="sm" asChild>
+              <a href="#pricing">
+                <Sparkles /> Get IndieShip
+              </a>
+            </Button>
+          </div>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="relative overflow-hidden px-4 pt-16 sm:px-6 lg:px-8 lg:pt-24">
+        <div className="mx-auto max-w-4xl text-center">
+          <div className="inline-flex items-center gap-2 rounded-full border bg-muted/50 px-3 py-1 text-sm font-medium mb-8">
+            <span className="flex size-2 rounded-full bg-green-500 animate-pulse" />
+            Get early pricing with discount
+          </div>
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+            Ship your SaaS in
+            <br />
+            <span className="text-primary">days, not months</span>
+          </h1>
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+            The headless TanStack + Convex + Clerk boilerplate. Everything you
+            need to build and launch your next product. Just add your business
+            logic.
+          </p>
+          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button size="lg" className="gap-2" asChild>
+              <a href="#pricing">
+                <Sparkles className="size-4" />
+                Get IndieShip
+              </a>
+            </Button>
+          </div>
+          <div className="mt-8 flex items-center justify-center gap-6 text-sm text-muted-foreground">
+            {benefits.slice(0, 3).map((benefit) => (
+              <div key={benefit} className="flex items-center gap-2">
+                <Check className="size-4 text-green-500" />
+                {benefit}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section id="features" className="px-4 py-24 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              Everything you need to ship
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Stop wasting time on boilerplate. Start building your product.
+            </p>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {features.map((feature) => (
+              <Card key={feature.title} className="group">
+                <CardHeader>
+                  <div className="flex size-10 items-center justify-center rounded-lg bg-primary/10 mb-4">
+                    <feature.icon className="size-5 text-primary" />
+                  </div>
+                  <CardTitle>{feature.title}</CardTitle>
+                  <CardDescription>{feature.description}</CardDescription>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section id="pricing" className="px-4 py-24 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              Simple, one-time pricing
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Pay once, own forever. No subscriptions, no surprises.
+            </p>
+          </div>
+          <div className="max-w-md mx-auto">
+            <Card className="border-primary shadow-lg">
+              <CardHeader>
+                <CardTitle className="mb-4">{pricingPlan.name}</CardTitle>
+                <div className="flex items-baseline gap-3">
+                  <span className="text-4xl font-bold">
+                    {pricingPlan.price}
+                  </span>
+                  <span className="text-lg text-muted-foreground line-through">
+                    {pricingPlan.originalPrice}
+                  </span>
+                </div>
+                <CardDescription>{pricingPlan.description}</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <ul className="space-y-3">
+                  {pricingPlan.features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-2">
+                      <Check className="size-4 text-green-500 mt-0.5 shrink-0" />
+                      <span className="text-sm">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Button className="w-full mt-6">
+                  <Sparkles /> {pricingPlan.cta}
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section
+        id="faq"
+        className="border-t bg-muted/30 px-4 py-24 sm:px-6 lg:px-8"
+      >
+        <div className="mx-auto max-w-3xl">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              Frequently asked questions
+            </h2>
+          </div>
+          <div className="space-y-4">
+            {faqs.map((faq) => (
+              <div key={faq.question} className="rounded-lg border bg-card p-6">
+                <h3 className="font-semibold mb-2">{faq.question}</h3>
+                <p className="text-sm text-muted-foreground">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="px-4 py-24 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl">
+          <Card className="bg-primary text-primary-foreground">
+            <CardContent className="p-12 text-center">
+              <Rocket className="mx-auto size-12 mb-6 opacity-90" />
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
+                Ready to ship your SaaS?
+              </h2>
+              {/* <p className="text-primary-foreground/80 text-lg max-w-xl mx-auto mb-8">
+                Join hundreds of founders who shipped faster with IndieShip.
+                Your boilerplate is waiting.
+              </p> */}
+              <Button size="lg" variant="secondary" className="gap-2" asChild>
+                <a href="#pricing">
+                  Get IndieShip Now
+                  <ArrowRight className="size-4" />
+                </a>
+              </Button>
+              {/* <p className="mt-4 text-sm text-primary-foreground/60">
+                14-day money-back guarantee. No questions asked.
+              </p> */}
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t px-4 py-12 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-between gap-4">
+          <BuiltWithIndieShip />
+
+          <div className="flex items-center gap-6 text-sm text-muted-foreground">
+            <a
+              href="https://x.com/itsithu"
+              className="hover:text-foreground transition-colors cursor-pointer"
+            >
+              Twitter
+            </a>
+            <a
+              href="https://github.com/get-indieship/indieship"
+              className="hover:text-foreground transition-colors cursor-pointer"
+            >
+              GitHub
+            </a>
+            <a
+              href="/docs"
+              className="hover:text-foreground transition-colors cursor-pointer"
+            >
+              Docs
+            </a>
+          </div>
+        </div>
+      </footer>
+    </div>
   );
 }
