@@ -1,0 +1,23 @@
+{
+  "title": "IndieShip",
+  "pages": [
+    "index",
+    "packages-json-and-hooks",
+    "todo",
+    "seo",
+    "analytics",
+    "convex",
+    "authentication",
+    "payment",
+
+    "---",
+    ".../routes",
+    "...",
+    "sitemap",
+    "terms-privacy",
+
+    "---",
+    "---...more to come---"
+  ],
+  "defaultOpen": true
+}
