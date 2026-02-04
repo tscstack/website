@@ -7,7 +7,8 @@ export const generateCheckoutUrl = action({
     const checkout = await polar.checkouts.create({
       successUrl: `${process.env.VITE_BASE_URL}/docs`,
       products: [process.env.VITE_POLAR_PRODUCT_ID as string],
-      allowDiscountCodes: true
+      allowDiscountCodes: true,
+      discountId: "EARLYBIRD"
     });
 
     return checkout.url;

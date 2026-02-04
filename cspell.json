@@ -22,6 +22,7 @@
     "indieship",
     "vite",
     "webp",
-    "posthog"
+    "posthog",
+    "earlybird"
   ]
 }
