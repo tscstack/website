@@ -80,21 +80,21 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <FumaRootProvider search={{ enabled: true }}>
-          <PostHogProvider>
-            <ConvexProvider client={convexQueryClient.convexClient}>
-              <ThemeProvider
-                attribute="class"
-                defaultTheme="system"
-                enableSystem
-                disableTransitionOnChange
-              >
-                <Toaster position="top-center" />
+        <PostHogProvider>
+          <ConvexProvider client={convexQueryClient.convexClient}>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <Toaster position="top-center" />
+              <FumaRootProvider search={{ enabled: true }}>
                 {children}
-              </ThemeProvider>
-            </ConvexProvider>
-          </PostHogProvider>
-        </FumaRootProvider>
+              </FumaRootProvider>
+            </ThemeProvider>
+          </ConvexProvider>
+        </PostHogProvider>
 
         <TanStackDevtools
           config={{

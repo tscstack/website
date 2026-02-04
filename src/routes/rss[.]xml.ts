@@ -7,15 +7,23 @@ import { source } from "~/libs/fumadocs/source";
 const baseUrl = import.meta.env.BASE_URL;
 
 export function getRSS() {
+  // const feed = new Feed({
+  //   title: "IndieShip",
+  //   id: `${baseUrl}/blog`,
+  //   link: `${baseUrl}/blog`,
+  //   language: "en",
+
+  //   image: `${baseUrl}/banner.png`,
+  //   favicon: `${baseUrl}/icon.png`,
+  //   copyright: "All rights reserved 2025, Fuma Nama"
+  // });
+  //
+
   const feed = new Feed({
     title: "IndieShip",
-    id: `${baseUrl}/blog`,
-    link: `${baseUrl}/blog`,
-    language: "en",
-
-    image: `${baseUrl}/banner.png`,
-    favicon: `${baseUrl}/icon.png`,
-    copyright: "All rights reserved 2025, Fuma Nama"
+    id: `${baseUrl}`,
+    link: `${baseUrl}`,
+    language: "en"
   });
 
   for (const page of source.getPages()) {

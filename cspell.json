@@ -26,6 +26,7 @@
     "vite",
     "webp",
     "posthog",
-    "earlybird"
+    "earlybird",
+    "noopener"
   ]
 }

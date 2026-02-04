@@ -400,14 +400,12 @@ function LandingPage() {
             >
               Discord
             </a>
-            <a
-              href="/docs"
-              target="_blank"
-              rel="noopener"
+            <Link
+              to="/docs/$"
               className="hover:text-foreground transition-colors cursor-pointer"
             >
               Docs
-            </a>
+            </Link>
           </div>
         </div>
       </footer>

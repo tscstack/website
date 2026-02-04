@@ -1,22 +1,36 @@
-import { PostHogProvider as RealPostHogProvider } from "posthog-js/react";
+import { useEffect, useState } from "react";
 
 export const PostHogProvider = ({
   children
 }: {
   children: React.ReactNode;
 }) => {
-  const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
+  const [Provider, setProvider] = useState<React.ComponentType<{
+    children: React.ReactNode;
+  }> | null>(null);
 
-  if (VITE_BASE_URL.includes("localhost")) {
-    return children;
-  }
+  useEffect(() => {
+    if (typeof window === "undefined") return;
 
-  const apiKey = import.meta.env.VITE_POSTHOG_KEY;
-  const apiHost = import.meta.env.VITE_POSTHOG_HOST;
+    const baseUrl = import.meta.env.VITE_BASE_URL ?? "";
+    if (baseUrl.includes("localhost")) return;
 
-  return (
-    <RealPostHogProvider apiKey={apiKey} options={{ api_host: apiHost }}>
-      {children}
-    </RealPostHogProvider>
-  );
+    Promise.all([import("posthog-js"), import("posthog-js/react")]).then(
+      ([posthog, react]) => {
+        posthog.default.init(import.meta.env.VITE_POSTHOG_KEY, {
+          api_host: import.meta.env.VITE_POSTHOG_HOST
+        });
+
+        setProvider(() => ({ children }: { children: React.ReactNode }) => (
+          <react.PostHogProvider client={posthog.default}>
+            {children}
+          </react.PostHogProvider>
+        ));
+      }
+    );
+  }, []);
+
+  if (!Provider) return children;
+
+  return <Provider>{children}</Provider>;
 };
