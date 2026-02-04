@@ -8,7 +8,7 @@ import {
   Gauge,
   Lock,
   Rocket,
-  Shield,
+  ScanSearch,
   Sparkles,
   Wrench,
   Zap
@@ -54,12 +54,12 @@ const features = [
     title: "SEO optimization"
   },
   {
-    icon: Wrench,
-    title: "Utilities"
+    icon: ScanSearch,
+    title: "Analytics"
   },
   {
-    icon: Shield,
-    title: "Fully Type Safe"
+    icon: Wrench,
+    title: "Utilities"
   },
   {
     icon: Zap,
@@ -89,6 +89,7 @@ const pricingPlan = {
     "Auth with Clerk",
     "Payment integration",
     "SEO optimization",
+    "Analytics",
     "Utilities",
     "Discord community",
     "Priority support"
@@ -100,7 +101,7 @@ const faqs = [
   {
     question: "What's included in the boilerplate?",
     answer:
-      "Everything you need to ship: TanStack Ecosystem setup, Convex integration, Clerk authentication, payment integration, shadcn/ui components, SEO optimization and useful utilities. Just clone and start building."
+      "Everything you need to ship: TanStack Ecosystem setup, Convex integration, Clerk authentication, payment integration, shadcn/ui components, SEO optimization, analytics, and useful utilities. Just clone and start building."
   },
   {
     question: "Why headless, not complete?",
@@ -343,18 +344,24 @@ function LandingPage() {
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
             <a
               href="https://x.com/itsithu"
+              target="_blank"
+              rel="noopener"
               className="hover:text-foreground transition-colors cursor-pointer"
             >
               Twitter
             </a>
             <a
-              href="https://github.com/get-indieship/indieship"
+              href="https://discord.gg/j947Ac4kps"
+              target="_blank"
+              rel="noopener"
               className="hover:text-foreground transition-colors cursor-pointer"
             >
-              GitHub
+              Discord
             </a>
             <a
               href="/docs"
+              target="_blank"
+              rel="noopener"
               className="hover:text-foreground transition-colors cursor-pointer"
             >
               Docs
