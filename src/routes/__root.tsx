@@ -11,6 +11,7 @@ import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
 import { ConvexQueryClient } from "@convex-dev/react-query";
 import { ConvexProvider } from "convex/react";
+import { RootProvider as FumaRootProvider } from "fumadocs-ui/provider/tanstack";
 
 import { PostHogProvider } from "~/components/analytics/posthog-provider";
 import { ErrorComponent } from "~/components/error-component";
@@ -79,19 +80,21 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <PostHogProvider>
-          <ConvexProvider client={convexQueryClient.convexClient}>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
-              <Toaster position="top-center" />
-              {children}
-            </ThemeProvider>
-          </ConvexProvider>
-        </PostHogProvider>
+        <FumaRootProvider search={{ enabled: false }}>
+          <PostHogProvider>
+            <ConvexProvider client={convexQueryClient.convexClient}>
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange
+              >
+                <Toaster position="top-center" />
+                {children}
+              </ThemeProvider>
+            </ConvexProvider>
+          </PostHogProvider>
+        </FumaRootProvider>
 
         <TanStackDevtools
           config={{

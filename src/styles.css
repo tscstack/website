@@ -4,6 +4,10 @@
 
 @import "tw-animate-css";
 
+@import "fumadocs-ui/css/solar.css";
+
+@import "fumadocs-ui/css/preset.css";
+
 @custom-variant dark (&:is(.dark *));
 
 html {

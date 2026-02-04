@@ -10,6 +10,7 @@
     "includes": [
       "**",
       "!.netlify",
+      "!.source",
       "!.tanstack",
       "!convex/_generated",
       "!dist",

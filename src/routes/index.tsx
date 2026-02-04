@@ -199,7 +199,7 @@ function LandingPage() {
           </nav>
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="sm" asChild>
-              <a href="https://github.com">Docs</a>
+              <Link to="/docs/$">Docs</Link>
             </Button>
             <Button
               size="lg"

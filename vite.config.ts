@@ -9,6 +9,9 @@ import viteReact from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import viteTsConfigPaths from "vite-tsconfig-paths";
 
+import mdx from "fumadocs-mdx/vite";
+import * as MdxConfig from "./source.config";
+
 const config = defineConfig({
   resolve: {
     alias: {
@@ -16,6 +19,7 @@ const config = defineConfig({
     }
   },
   plugins: [
+    mdx(MdxConfig),
     devtools(),
     netlify(),
     viteTsConfigPaths({
