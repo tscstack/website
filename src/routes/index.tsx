@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
+import { api } from "convex/_generated/api";
+import { useAction } from "convex/react";
 import {
   ArrowRight,
   Check,
@@ -141,6 +143,16 @@ const faqs = [
 ];
 
 function LandingPage() {
+  const generateCheckoutUrl = useAction(api.data.polar.generateCheckoutUrl);
+
+  const handleCheckout = async () => {
+    const checkoutUrl = await generateCheckoutUrl();
+
+    if (typeof window !== "undefined") {
+      window.location.href = checkoutUrl;
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Navbar */}
@@ -173,10 +185,8 @@ function LandingPage() {
             <Button variant="ghost" size="sm" asChild>
               <a href="https://github.com">Docs</a>
             </Button>
-            <Button size="sm" asChild>
-              <a href="#pricing">
-                <Sparkles /> Get IndieShip
-              </a>
+            <Button size="sm" onClick={handleCheckout}>
+              <Sparkles /> Get IndieShip
             </Button>
           </div>
         </div>
@@ -200,11 +210,9 @@ function LandingPage() {
             styling and your business logics
           </p>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button size="lg" className="gap-2" asChild>
-              <a href="#pricing">
-                <Sparkles className="size-4" />
-                Get IndieShip
-              </a>
+            <Button size="lg" className="gap-2" onClick={handleCheckout}>
+              <Sparkles className="size-4" />
+              Get IndieShip
             </Button>
           </div>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground">
@@ -322,11 +330,14 @@ function LandingPage() {
                 Join hundreds of founders who shipped faster with IndieShip.
                 Your boilerplate is waiting.
               </p> */}
-              <Button size="lg" variant="secondary" className="gap-2" asChild>
-                <a href="#pricing">
-                  Get IndieShip Now
-                  <ArrowRight className="size-4" />
-                </a>
+              <Button
+                size="lg"
+                variant="secondary"
+                className="gap-2"
+                onClick={handleCheckout}
+              >
+                Get IndieShip Now
+                <ArrowRight className="size-4" />
               </Button>
               {/* <p className="mt-4 text-sm text-primary-foreground/60">
                 14-day money-back guarantee. No questions asked.

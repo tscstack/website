@@ -87,7 +87,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
               enableSystem
               disableTransitionOnChange
             >
-              <Toaster />
+              <Toaster position="top-center" />
               {children}
             </ThemeProvider>
           </ConvexProvider>
