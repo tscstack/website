@@ -27,7 +27,7 @@ import { seoMeta } from "~/utils/seo";
 export const Route = createFileRoute("/")({
   component: LandingPage,
   head: ({ match }) => ({
-    meta: seoMeta({ title: "Ship SaaS Faster", url: match.fullPath })
+    meta: seoMeta({ title: "default", url: match.fullPath })
   })
 });
 
@@ -97,12 +97,12 @@ const faqs = [
   {
     question: "What's included in the boilerplate?",
     answer:
-      "Everything you need to ship: TanStack Start setup, Convex database integration, Clerk authentication, shadcn/ui components, Tailwind CSS, and a complete landing page. Just clone and start building."
+      "Everything you need to ship: TanStack Start setup, Convex database integration, Clerk authentication, payment integration, shadcn/ui components, SEO optimization. Just clone and start building."
   },
   {
-    question: "Can I use this for commercial projects?",
+    question: "Why headless, not complete?",
     answer:
-      "Absolutely. Once you purchase, you can use the boilerplate for unlimited commercial projects. No attribution required."
+      "We believe in giving you the freedom to build your own design system. Headless gives you full control over your UI while providing the best-in-class integrations for your business need."
   },
   {
     question: "How often is it updated?",
@@ -110,14 +110,29 @@ const faqs = [
       "We update dependencies weekly and add new features monthly. You'll get lifetime access to all updates."
   },
   {
-    question: "Do I need to know TanStack or Convex?",
+    question: "Is IndieShip only for indie hackers?",
     answer:
-      "Basic React knowledge is enough. Our docs and examples will get you up to speed quickly. Most developers are productive within an hour."
+      "No! IndieShip is for anyone building a web application. Whether you're a solo founder, a small team, or a large organization, IndieShip has something for you."
+  },
+  {
+    question: "Is IndieShip better than other boilerplates?",
+    answer:
+      "We don't want to compare our headless approach with other boilerplates. Other boilerplates you see are mostly the complete ones and ours is the headless one with freedom to build your own design system."
+  },
+  {
+    question: "Do I need to know TanStack, Convex, Clerk, or anything else?",
+    answer:
+      "This headless boilerplate is designed to be production-ready grade. Some setups might be overwhelming for you, but we provide comprehensive documentation and examples."
   },
   {
     question: "What if I get stuck?",
     answer:
-      "We have comprehensive docs, video tutorials, and a supportive Discord community. Pro and Team plans include priority support."
+      "Just send an email at sithuknt@gmail.com or join our Discord community."
+  },
+  {
+    question: "Can I get refund?",
+    answer:
+      "Unfortunately, we don't offer refunds. Once you purchase, you own it forever."
   }
 ];
 
@@ -171,14 +186,14 @@ function LandingPage() {
             Get early pricing with discount
           </div>
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-            Ship your SaaS in
-            <br />
-            <span className="text-primary">days, not months</span>
+            The Ultimate Headless SaaS Boilerplate
+            {/* <br /> */}
+            {/* <span className="text-primary">days, not months</span> */}
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
             The headless TanStack + Convex + Clerk boilerplate. Everything you
-            need to build and launch your next product. Just add your business
-            logic.
+            need to build and launch your next product. <br /> Just add unique
+            styling and your business logics
           </p>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button size="lg" className="gap-2" asChild>
@@ -188,7 +203,7 @@ function LandingPage() {
               </a>
             </Button>
           </div>
-          <div className="mt-8 flex items-center justify-center gap-6 text-sm text-muted-foreground">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground">
             {benefits.slice(0, 3).map((benefit) => (
               <div key={benefit} className="flex items-center gap-2">
                 <Check className="size-4 text-green-500" />
