@@ -12,6 +12,7 @@ import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { ConvexQueryClient } from "@convex-dev/react-query";
 import { ConvexProvider } from "convex/react";
 
+import { PostHogProvider } from "~/components/analytics/posthog-provider";
 import { ErrorComponent } from "~/components/error-component";
 import { NotFoundComponent } from "~/components/not-found-component";
 import { ThemeProvider } from "~/components/theme-provider";
@@ -78,17 +79,19 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <ConvexProvider client={convexQueryClient.convexClient}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Toaster />
-            {children}
-          </ThemeProvider>
-        </ConvexProvider>
+        <PostHogProvider>
+          <ConvexProvider client={convexQueryClient.convexClient}>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <Toaster />
+              {children}
+            </ThemeProvider>
+          </ConvexProvider>
+        </PostHogProvider>
 
         <TanStackDevtools
           config={{

@@ -21,6 +21,7 @@
     "tanstack",
     "indieship",
     "vite",
-    "webp"
+    "webp",
+    "posthog"
   ]
 }
