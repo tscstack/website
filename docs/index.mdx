@@ -1,6 +1,67 @@
 ---
-title: Hello World
-lastModified: 2026-02-04
+title: Get Started
 ---
 
-I love Fumadocs
+#### 1. To get started, clone the cleaned git repo using degit
+
+```bash
+# Clone the git repo
+git clone https://github.com/get-indieship/indieship [YOUR_APP_NAME]
+
+# Go inside your directory
+cd [YOUR_APP_NAME]
+
+# Remove the git repo
+rm -rf .git
+
+# Reinitialize git (optional, but recommended)
+git init
+
+# Then, install the packages
+bun install
+```
+
+#### 2. Copy `.env.local.example` to `.env.local` and `.env.prod`
+
+```bash
+cp .env.local.example .env.local
+cp .env.local.example .env.prod
+```
+
+- Fill the environment variable values
+- `.env.local` is for your local development environment
+- `.env.prod` is for the production app
+
+#### 3. Run the git hook (recommended)
+
+```bash
+bun run husky
+```
+
+- It is okay not to use Husky, but I recommend it.
+- [Learn more](https://typicode.github.io/husky) about husky
+- [Learn more](/docs/packages-json-and-hooks) about package.json and hooks
+
+#### 4. Run the dev server and Convex dev server
+
+Open your terminal and create two separate terminal tabs using `cmd + t` and type:
+
+```bash
+# In your Terminal tab 1
+# For local dev
+bun run dev
+```
+
+```bash
+# In your terminal tab 2
+# For Convex dev server
+bun run dev:convex
+
+# Note: After you run dev:convex for the first time, 
+# you will be asked to fill environment values of the convex site
+# just follow the instructions
+```
+
+#### 5. Done!
+
+You can start coding and ship fast or continue reading this documentation for a better understanding of the codebase.

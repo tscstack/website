@@ -80,7 +80,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <FumaRootProvider search={{ enabled: false }}>
+        <FumaRootProvider search={{ enabled: true }}>
           <PostHogProvider>
             <ConvexProvider client={convexQueryClient.convexClient}>
               <ThemeProvider

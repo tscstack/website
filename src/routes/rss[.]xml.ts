@@ -28,7 +28,7 @@ export function getRSS() {
 
       author: [
         {
-          name: "Fuma"
+          name: "IndieShip"
         }
       ]
     });
