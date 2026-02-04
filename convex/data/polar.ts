@@ -8,7 +8,7 @@ export const generateCheckoutUrl = action({
       successUrl: `${process.env.VITE_BASE_URL}/docs`,
       products: [process.env.VITE_POLAR_PRODUCT_ID as string],
       allowDiscountCodes: true,
-      discountId: "EARLYBIRD"
+      discountId: "a61ea260-eb34-44cf-b83d-d17613a28f57"
     });
 
     return checkout.url;
