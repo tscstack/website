@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { api } from "convex/_generated/api";
@@ -25,6 +27,7 @@ import {
   CardHeader,
   CardTitle
 } from "~/components/ui/card";
+import { Spinner } from "~/components/ui/spinner";
 import { seoMeta } from "~/utils/seo";
 
 export const Route = createFileRoute("/")({
@@ -143,13 +146,26 @@ const faqs = [
 ];
 
 function LandingPage() {
+  const [isNavLoading, setIsNavLoading] = useState(false);
+  const [isHeroLoading, setIsHeroLoading] = useState(false);
+  const [isPricingLoading, setIsPricingLoading] = useState(false);
+  const [isCtaLoading, setIsCtaLoading] = useState(false);
   const generateCheckoutUrl = useAction(api.data.polar.generateCheckoutUrl);
 
-  const handleCheckout = async () => {
-    const checkoutUrl = await generateCheckoutUrl();
+  const isCheckoutLoading =
+    isNavLoading || isHeroLoading || isPricingLoading || isCtaLoading;
 
-    if (typeof window !== "undefined") {
-      window.location.href = checkoutUrl;
+  const handleCheckout = async (setLoading: (loading: boolean) => void) => {
+    setLoading(true);
+    try {
+      const checkoutUrl = await generateCheckoutUrl();
+
+      if (typeof window !== "undefined") {
+        window.location.href = checkoutUrl;
+      }
+    } catch (error) {
+      console.error("Checkout failed:", error);
+      setLoading(false);
     }
   };
 
@@ -185,8 +201,13 @@ function LandingPage() {
             <Button variant="ghost" size="sm" asChild>
               <a href="https://github.com">Docs</a>
             </Button>
-            <Button size="sm" onClick={handleCheckout}>
-              <Sparkles /> Get IndieShip
+            <Button
+              size="lg"
+              className="gap-2"
+              onClick={() => handleCheckout(setIsNavLoading)}
+              disabled={isCheckoutLoading}
+            >
+              {isNavLoading ? <Spinner /> : <Sparkles />} Get IndieShip
             </Button>
           </div>
         </div>
@@ -210,9 +231,13 @@ function LandingPage() {
             styling and your business logics
           </p>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button size="lg" className="gap-2" onClick={handleCheckout}>
-              <Sparkles className="size-4" />
-              Get IndieShip
+            <Button
+              size="lg"
+              className="gap-2"
+              onClick={() => handleCheckout(setIsHeroLoading)}
+              disabled={isCheckoutLoading}
+            >
+              {isHeroLoading ? <Spinner /> : <Sparkles />} Get IndieShip
             </Button>
           </div>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground">
@@ -286,8 +311,13 @@ function LandingPage() {
                     </li>
                   ))}
                 </ul>
-                <Button className="w-full mt-6">
-                  <Sparkles /> {pricingPlan.cta}
+                <Button
+                  className="w-full mt-6"
+                  onClick={() => handleCheckout(setIsPricingLoading)}
+                  disabled={isCheckoutLoading}
+                >
+                  {isPricingLoading ? <Spinner /> : <Sparkles />}{" "}
+                  {pricingPlan.cta}
                 </Button>
               </CardContent>
             </Card>
@@ -334,10 +364,11 @@ function LandingPage() {
                 size="lg"
                 variant="secondary"
                 className="gap-2"
-                onClick={handleCheckout}
+                onClick={() => handleCheckout(setIsCtaLoading)}
+                disabled={isCheckoutLoading}
               >
                 Get IndieShip Now
-                <ArrowRight className="size-4" />
+                {isCtaLoading ? <Spinner /> : <ArrowRight className="size-4" />}
               </Button>
               {/* <p className="mt-4 text-sm text-primary-foreground/60">
                 14-day money-back guarantee. No questions asked.
