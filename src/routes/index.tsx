@@ -84,9 +84,9 @@ const benefits = [
 
 const pricingPlan = {
   name: "IndieShip",
-  originalPrice: "$120",
-  price: "$15",
-  description: "Early bird pricing. Lifetime access.",
+  originalPrice: "$8",
+  price: "$5",
+  description: "Early bird pricing. Properly cheaper than a cup of coffee.",
   features: [
     "Full source code access",
     "Lifetime updates",
@@ -112,6 +112,11 @@ const faqs = [
     question: "Why headless, not complete?",
     answer:
       "We believe in giving you the freedom to build your own design system. Headless gives you full control over your UI while providing the best-in-class integrations for your business need."
+  },
+  {
+    question: "Can we just use the cli tools to generate headless boilerplate?",
+    answer:
+      "Yes, you can freely use TanStack, better-t-stack, and other cli tools to generate headless boilerplate. But they are too generic where IndieShip is the middle between those tools and complete boilerplates."
   },
   {
     question: "How often is it updated?",
