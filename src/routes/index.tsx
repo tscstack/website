@@ -85,7 +85,7 @@ const benefits = [
 const pricingPlan = {
   name: "IndieShip",
   originalPrice: "$120",
-  price: "$20",
+  price: "$15",
   description: "Early bird pricing. Lifetime access.",
   features: [
     "Full source code access",

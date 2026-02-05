@@ -9,6 +9,7 @@
     "convex",
     "authentication",
     "payment",
+    "deployment",
 
     "---",
     ".../routes",

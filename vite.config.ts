@@ -3,13 +3,13 @@ import { fileURLToPath, URL } from "node:url";
 import { devtools } from "@tanstack/devtools-vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 
-import netlify from "@netlify/vite-plugin-tanstack-start";
 import tailwindcss from "@tailwindcss/vite";
 import viteReact from "@vitejs/plugin-react";
+import mdx from "fumadocs-mdx/vite";
+import { nitro } from "nitro/vite";
 import { defineConfig } from "vite";
 import viteTsConfigPaths from "vite-tsconfig-paths";
 
-import mdx from "fumadocs-mdx/vite";
 import * as MdxConfig from "./source.config";
 
 const config = defineConfig({
@@ -19,9 +19,8 @@ const config = defineConfig({
     }
   },
   plugins: [
-    mdx(MdxConfig),
     devtools(),
-    netlify(),
+    nitro(),
     viteTsConfigPaths({
       projects: ["./tsconfig.json"]
     }),
@@ -32,11 +31,12 @@ const config = defineConfig({
         crawlLinks: true
       },
       sitemap: {
-        enabled: false,
+        enabled: true,
         host: "indieship.xyz"
       }
     }),
-    viteReact()
+    viteReact(),
+    mdx(MdxConfig)
   ]
 });
 

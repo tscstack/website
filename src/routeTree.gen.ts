@@ -9,7 +9,6 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RssDotxmlRouteImport } from './routes/rss[.]xml'
 import { Route as LegalRouteRouteImport } from './routes/_legal/route'
 import { Route as IndexRouteImport } from './routes/index'
@@ -18,11 +17,6 @@ import { Route as ApiSearchRouteImport } from './routes/api/search'
 import { Route as LegalTermsRouteImport } from './routes/_legal/terms'
 import { Route as LegalPrivacyRouteImport } from './routes/_legal/privacy'
 
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const RssDotxmlRoute = RssDotxmlRouteImport.update({
   id: '/rss.xml',
   path: '/rss.xml',
@@ -61,7 +55,6 @@ const LegalPrivacyRoute = LegalPrivacyRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/rss.xml': typeof RssDotxmlRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/privacy': typeof LegalPrivacyRoute
   '/terms': typeof LegalTermsRoute
   '/api/search': typeof ApiSearchRoute
@@ -70,7 +63,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/rss.xml': typeof RssDotxmlRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/privacy': typeof LegalPrivacyRoute
   '/terms': typeof LegalTermsRoute
   '/api/search': typeof ApiSearchRoute
@@ -81,7 +73,6 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_legal': typeof LegalRouteRouteWithChildren
   '/rss.xml': typeof RssDotxmlRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/_legal/privacy': typeof LegalPrivacyRoute
   '/_legal/terms': typeof LegalTermsRoute
   '/api/search': typeof ApiSearchRoute
@@ -92,26 +83,17 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/rss.xml'
-    | '/sitemap.xml'
     | '/privacy'
     | '/terms'
     | '/api/search'
     | '/docs/$'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/rss.xml'
-    | '/sitemap.xml'
-    | '/privacy'
-    | '/terms'
-    | '/api/search'
-    | '/docs/$'
+  to: '/' | '/rss.xml' | '/privacy' | '/terms' | '/api/search' | '/docs/$'
   id:
     | '__root__'
     | '/'
     | '/_legal'
     | '/rss.xml'
-    | '/sitemap.xml'
     | '/_legal/privacy'
     | '/_legal/terms'
     | '/api/search'
@@ -122,20 +104,12 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   LegalRouteRoute: typeof LegalRouteRouteWithChildren
   RssDotxmlRoute: typeof RssDotxmlRoute
-  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ApiSearchRoute: typeof ApiSearchRoute
   DocsSplatRoute: typeof DocsSplatRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/rss.xml': {
       id: '/rss.xml'
       path: '/rss.xml'
@@ -206,7 +180,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LegalRouteRoute: LegalRouteRouteWithChildren,
   RssDotxmlRoute: RssDotxmlRoute,
-  SitemapDotxmlRoute: SitemapDotxmlRoute,
   ApiSearchRoute: ApiSearchRoute,
   DocsSplatRoute: DocsSplatRoute,
 }
