@@ -1,0 +1,63 @@
+---
+title: scripts and git hooks
+---
+
+### Package.json Scripts
+
+```bash
+1. "dev": "vite dev --port 3000",
+  - Start dev server
+
+2. "dev:convex": "convex dev",
+  - Start convex dev server
+
+3. "dash:convex": "convex dashboard",
+  - Open convex dashboard from the terminal
+
+4. "deploy:convex": "convex deploy",
+  - Deploy to convex prod server
+
+5. "husky": "husky",
+  - Initialize husky
+
+6. "format": "biome format",
+  - Format code
+  - If you want to fix formatting errors automatically, run `bun run format --write`
+
+7. "lint": "biome lint",
+  - Lint code
+  - If you want to fix linting errors automatically, run `bun run lint --write`
+
+8. "check": "biome check"
+  - Check code for linting and formatting errors
+```
+
+**Note**: Add your own `deploy:dev` or `deploy:prod` scripts because you might want to deploy to a service provider.
+
+For example using Vercel:
+
+```bash
+# first install vercel (-d instead of -g for project specific only)
+bun add -g vercel
+
+# packages.json
+"deploy:dev": "vercel",
+"deploy:prod": "vercel --prod",
+```
+
+### Git Hooks
+
+There are several git hooks preconfigured for you to keep everything in sync.
+
+- [husky](https://typicode.github.io/husky)
+  - See `.husky` folder
+- [lint-staged](https://github.com/okonet/lint-staged)
+  - See `.lintstagedrc` file
+- [commitlint](https://commitlint.js.org)
+  - See `.commitlint.config.mjs` file
+
+Run `bun run husky` to initialize husky.
+
+There are `commit-msg` and `pre-commit` hooks preconfigured. See `.husky` directory in the codebase.
+
+Change it to `npm` or `pnpm` or `yarn` depending on your preference. Default is `bun`.

@@ -23,7 +23,7 @@ export const seoMeta = (opts: SeoOptions) => {
     description = "IndieShip is a headless TanStack + Convex + Clerk boilerplate to ship SaaS apps fast. Built with TanStack Start, Clerk auth, strict TypeScript, shadcn/ui, and modern workflows—no fluff, just shipping.",
     keywords = "TanStack + Convex + Clerk boilerplate, TanStack + Convex + Clerk starter kit, TanStack Start + Convex + Clerk, TanStack + Convex + Clerk SaaS boilerplate, TanStack + Convex + Clerk starter, TanStack + Convex + Clerk auth, TanStack + Convex + Clerk TypeScript starter, TanStack + Convex + Clerk realtime SaaS, TanStack + Convex + Clerk fullstack boilerplate, ship TanStack + Convex + Clerk apps, IndieShip",
     ogImageUrl = `${VITE_BASE_URL}/og-image.png`,
-    twitterHandle = "@itsithu",
+    twitterHandle = "@heysithu",
     type = "website",
     locale = "en_US"
   } = opts;

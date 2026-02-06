@@ -1,8 +1,11 @@
 {
   "title": "IndieShip",
   "pages": [
+    "[✨ Get IndieShip ✨](/#pricing)",
+    "---",
+
     "index",
-    "packages-json-and-hooks",
+    "scripts-and-git-hooks",
     "todo",
     "seo",
     "analytics",

@@ -221,10 +221,26 @@ function LandingPage() {
       {/* Hero Section */}
       <section className="relative overflow-hidden px-4 pt-16 sm:px-6 lg:px-8 lg:pt-24">
         <div className="mx-auto max-w-4xl text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border bg-muted/50 px-3 py-1 text-sm font-medium mb-8">
+          {/*<div className="inline-flex items-center gap-2 rounded-full border bg-muted/50 px-3 py-1 text-sm font-medium mb-8">
             <span className="flex size-2 rounded-full bg-green-500 animate-pulse" />
             Get early pricing with discount
+          </div>*/}
+
+          <div className="flex justify-center mb-6">
+            <a
+              href="https://www.producthunt.com/products/indieship?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-indieship"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                alt="IndieShip - Headless boilerplate to ship startups fast - only $5 | Product Hunt"
+                width={250}
+                height={54}
+                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1073969&theme=light&t=1770304687266"
+              />
+            </a>
           </div>
+
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
             The Ultimate Headless SaaS Boilerplate
             {/* <br /> */}
@@ -390,7 +406,7 @@ function LandingPage() {
 
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
             <a
-              href="https://x.com/itsithu"
+              href="https://x.com/heysithu"
               target="_blank"
               rel="noopener"
               className="hover:text-foreground transition-colors cursor-pointer"

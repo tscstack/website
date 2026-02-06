@@ -7,6 +7,8 @@
     "dev:convex": "convex dev",
     "dash:convex": "convex dashboard",
     "deploy:convex": "convex deploy",
+    "deploy:dev": "vercel",
+    "deploy:prod": "vercel --prod --force",
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run",
