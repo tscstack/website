@@ -95,7 +95,7 @@ function LandingPage() {
           <Link to="/" className="flex items-center gap-2 font-bold text-xl">
             <img src="/tscstack-logo.png" className="w-30" alt="TSC Stack" />
           </Link>
-          <nav className="hidden md:flex items-center gap-8">
+          {/*<nav className="hidden md:flex items-center gap-8">
             <a
               href="#features"
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
@@ -114,7 +114,7 @@ function LandingPage() {
             >
               FAQ
             </a>
-          </nav>
+          </nav>*/}
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="sm" asChild>
               <Link to="/docs/$">Docs</Link>
