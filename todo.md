@@ -1,4 +1,4 @@
-See the docs if you need help: https://indieship.xyz/docs
+See the docs if you need help: https://tscstack.vercel.app/docs
 
 - [ ] - Update your product name
     - [ ] - YOUR_APP_NAME -> Your Actual App Name

@@ -32,7 +32,7 @@ const config = defineConfig({
       },
       sitemap: {
         enabled: true,
-        host: "indieship.xyz"
+        host: "tscstack.vercel.app"
       }
     }),
     viteReact(),

@@ -23,8 +23,8 @@ type LegalConfig = {
 export const legalConfig: LegalConfig = {
   effectiveDate: "Mon Dec 1, 2025",
   lastUpdatedDate: "Mon Dec 1, 2025",
-  productName: "IndieShip",
-  businessName: "IndieShip",
+  productName: "TSC Stack",
+  businessName: "TSC Stack",
   supportEmail: "sithuknt@gmail.com",
   minAge: "13",
   pricingOptions: ["One-Time Payment"]

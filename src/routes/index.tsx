@@ -1,11 +1,8 @@
-import { useState } from "react";
-
 import { createFileRoute, Link } from "@tanstack/react-router";
 
-import { api } from "convex/_generated/api";
-import { useAction } from "convex/react";
+// import { api } from "convex/_generated/api";
+// import { useAction } from "convex/react";
 import {
-  ArrowRight,
   Check,
   Code2,
   Database,
@@ -20,14 +17,7 @@ import {
 
 import { BuiltWithIndieShip } from "~/components/built-with-indie-ship";
 import { Button } from "~/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle
-} from "~/components/ui/card";
-import { Spinner } from "~/components/ui/spinner";
+import { Card, CardDescription, CardHeader } from "~/components/ui/card";
 import { seoMeta } from "~/utils/seo";
 
 export const Route = createFileRoute("/")({
@@ -82,97 +72,20 @@ const benefits = [
   "Regular updates and improvements"
 ];
 
-const pricingPlan = {
-  name: "IndieShip",
-  originalPrice: "$8",
-  price: "$5",
-  description: "Early bird pricing. Properly cheaper than a cup of coffee.",
-  features: [
-    "Full source code access",
-    "Lifetime updates",
-    "Convex integration",
-    "Auth with Clerk",
-    "Payment integration",
-    "SEO optimization",
-    "Analytics",
-    "Utilities",
-    "Discord community",
-    "Priority support"
-  ],
-  cta: "Get IndieShip"
-};
-
-const faqs = [
-  {
-    question: "What's included in the boilerplate?",
-    answer:
-      "Everything you need to ship: TanStack Ecosystem setup, Convex integration, Clerk authentication, payment integration, shadcn/ui components, SEO optimization, analytics, and useful utilities. Just clone and start building."
-  },
-  {
-    question: "Why headless, not complete?",
-    answer:
-      "We believe in giving you the freedom to build your own design system. Headless gives you full control over your UI while providing the best-in-class integrations for your business need."
-  },
-  {
-    question: "Can we just use the cli tools to generate headless boilerplate?",
-    answer:
-      "Yes, you can freely use TanStack, better-t-stack, and other cli tools to generate headless boilerplate. But they are too generic where IndieShip is the middle between those tools and complete boilerplates."
-  },
-  {
-    question: "How often is it updated?",
-    answer:
-      "We update dependencies weekly and add new features monthly. You'll get lifetime access to all updates."
-  },
-  {
-    question: "Is IndieShip only for indie hackers?",
-    answer:
-      "No! IndieShip is for anyone building a web application. Whether you're a solo founder, a small team, or a large organization, IndieShip provides the foundation you need."
-  },
-  {
-    question: "Is IndieShip better than other boilerplates?",
-    answer:
-      "We don't want to compare our headless approach with other boilerplates. Other boilerplates you see are mostly the complete ones and ours is the headless one with freedom to build your own design system."
-  },
-  {
-    question: "Do I need to know TanStack, Convex, Clerk, or anything else?",
-    answer:
-      "This headless boilerplate is designed to be production-ready grade. Some setups might be overwhelming for you, but we provide comprehensive documentation and examples."
-  },
-  {
-    question: "What if I get stuck?",
-    answer:
-      "Just send an email at sithuknt@gmail.com or join our Discord community."
-  },
-  {
-    question: "Can I get refund?",
-    answer:
-      "Unfortunately, we don't offer refunds. Once you purchase, you own it forever."
-  }
-];
-
 function LandingPage() {
-  const [isNavLoading, setIsNavLoading] = useState(false);
-  const [isHeroLoading, setIsHeroLoading] = useState(false);
-  const [isPricingLoading, setIsPricingLoading] = useState(false);
-  const [isCtaLoading, setIsCtaLoading] = useState(false);
-  const generateCheckoutUrl = useAction(api.data.polar.generateCheckoutUrl);
+  // const generateCheckoutUrl = useAction(api.data.polar.generateCheckoutUrl);
 
-  const isCheckoutLoading =
-    isNavLoading || isHeroLoading || isPricingLoading || isCtaLoading;
+  // const handleCheckout = async () => {
+  //   try {
+  //     const checkoutUrl = await generateCheckoutUrl();
 
-  const handleCheckout = async (setLoading: (loading: boolean) => void) => {
-    setLoading(true);
-    try {
-      const checkoutUrl = await generateCheckoutUrl();
-
-      if (typeof window !== "undefined") {
-        window.location.href = checkoutUrl;
-      }
-    } catch (error) {
-      console.error("Checkout failed:", error);
-      setLoading(false);
-    }
-  };
+  //     if (typeof window !== "undefined") {
+  //       window.location.href = checkoutUrl;
+  //     }
+  //   } catch (error) {
+  //     console.error("Checkout failed:", error);
+  //   }
+  // };
 
   return (
     <div className="min-h-screen bg-background">
@@ -180,7 +93,7 @@ function LandingPage() {
       <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link to="/" className="flex items-center gap-2 font-bold text-xl">
-            <img src="/indieship-logo.png" className="w-30" alt="IndieShip" />
+            <img src="/tscstack-logo.png" className="w-30" alt="TSC Stack" />
           </Link>
           <nav className="hidden md:flex items-center gap-8">
             <a
@@ -206,13 +119,8 @@ function LandingPage() {
             <Button variant="ghost" size="sm" asChild>
               <Link to="/docs/$">Docs</Link>
             </Button>
-            <Button
-              size="lg"
-              className="gap-2"
-              onClick={() => handleCheckout(setIsNavLoading)}
-              disabled={isCheckoutLoading}
-            >
-              {isNavLoading ? <Spinner /> : <Sparkles />} Get IndieShip
+            <Button asChild>
+              <a href="https://github.com/tscstack/tscstack">GitHub</a>
             </Button>
           </div>
         </div>
@@ -221,28 +129,8 @@ function LandingPage() {
       {/* Hero Section */}
       <section className="relative overflow-hidden px-4 pt-16 sm:px-6 lg:px-8 lg:pt-24">
         <div className="mx-auto max-w-4xl text-center">
-          {/*<div className="inline-flex items-center gap-2 rounded-full border bg-muted/50 px-3 py-1 text-sm font-medium mb-8">
-            <span className="flex size-2 rounded-full bg-green-500 animate-pulse" />
-            Get early pricing with discount
-          </div>*/}
-
-          <div className="flex justify-center mb-6">
-            <a
-              href="https://www.producthunt.com/products/indieship?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-indieship"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                alt="IndieShip - Headless boilerplate to ship startups fast - only $5 | Product Hunt"
-                width={250}
-                height={54}
-                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1073969&theme=light&t=1770304687266"
-              />
-            </a>
-          </div>
-
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-            The Ultimate Headless SaaS Boilerplate
+            The Free and Open-Source Headless Boilerplate
             {/* <br /> */}
             {/* <span className="text-primary">days, not months</span> */}
           </h1>
@@ -252,13 +140,11 @@ function LandingPage() {
             styling and your business logics
           </p>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button
-              size="lg"
-              className="gap-2"
-              onClick={() => handleCheckout(setIsHeroLoading)}
-              disabled={isCheckoutLoading}
-            >
-              {isHeroLoading ? <Spinner /> : <Sparkles />} Get IndieShip
+            <Button asChild>
+              <Link to="/docs/$">Read the Docs</Link>
+            </Button>
+            <Button asChild>
+              <a href="https://github.com/tscstack/tscstack">GitHub</a>
             </Button>
           </div>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground">
@@ -295,107 +181,6 @@ function LandingPage() {
               </Card>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Pricing Section */}
-      <section id="pricing" className="px-4 py-24 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Simple, one-time pricing
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Pay once, own forever. No subscriptions, no surprises.
-            </p>
-          </div>
-          <div className="max-w-md mx-auto">
-            <Card className="border-primary shadow-lg">
-              <CardHeader>
-                <CardTitle className="mb-4">{pricingPlan.name}</CardTitle>
-                <div className="flex items-baseline gap-3">
-                  <span className="text-4xl font-bold">
-                    {pricingPlan.price}
-                  </span>
-                  <span className="text-lg text-muted-foreground line-through">
-                    {pricingPlan.originalPrice}
-                  </span>
-                </div>
-                <CardDescription>{pricingPlan.description}</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <ul className="space-y-3">
-                  {pricingPlan.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-2">
-                      <Check className="size-4 text-green-500 mt-0.5 shrink-0" />
-                      <span className="text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Button
-                  className="w-full mt-6"
-                  onClick={() => handleCheckout(setIsPricingLoading)}
-                  disabled={isCheckoutLoading}
-                >
-                  {isPricingLoading ? <Spinner /> : <Sparkles />}{" "}
-                  {pricingPlan.cta}
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section
-        id="faq"
-        className="border-t bg-muted/30 px-4 py-24 sm:px-6 lg:px-8"
-      >
-        <div className="mx-auto max-w-3xl">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Frequently asked questions
-            </h2>
-          </div>
-          <div className="space-y-4">
-            {faqs.map((faq) => (
-              <div key={faq.question} className="rounded-lg border bg-card p-6">
-                <h3 className="font-semibold mb-2">{faq.question}</h3>
-                <p className="text-sm text-muted-foreground">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="px-4 py-24 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl">
-          <Card className="bg-primary text-primary-foreground">
-            <CardContent className="p-12 text-center">
-              <Rocket className="mx-auto size-12 mb-6 opacity-90" />
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-                Ready to ship your SaaS?
-              </h2>
-              {/* <p className="text-primary-foreground/80 text-lg max-w-xl mx-auto mb-8">
-                Join hundreds of founders who shipped faster with IndieShip.
-                Your boilerplate is waiting.
-              </p> */}
-              <Button
-                size="lg"
-                variant="secondary"
-                className="gap-2"
-                onClick={() => handleCheckout(setIsCtaLoading)}
-                disabled={isCheckoutLoading}
-              >
-                Get IndieShip Now
-                {isCtaLoading ? <Spinner /> : <ArrowRight className="size-4" />}
-              </Button>
-              {/* <p className="mt-4 text-sm text-primary-foreground/60">
-                14-day money-back guarantee. No questions asked.
-              </p> */}
-            </CardContent>
-          </Card>
         </div>
       </section>
 

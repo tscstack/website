@@ -57,7 +57,7 @@ const clientLoader = browserCollections.docs.createClientLoader({
 function baseOptions(): BaseLayoutProps {
   return {
     nav: {
-      title: "IndieShip"
+      title: "TSC Stack"
     }
   };
 }

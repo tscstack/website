@@ -1,9 +1,6 @@
 {
-  "title": "IndieShip",
+  "title": "TSC Stack",
   "pages": [
-    "[✨ Get IndieShip ✨](/#pricing)",
-    "---",
-
     "index",
     "scripts-and-git-hooks",
     "todo",

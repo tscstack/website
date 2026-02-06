@@ -1,5 +1,5 @@
 {
-  "projectName": "indieship",
+  "projectName": "tscstack",
   "mode": "file-router",
   "typescript": true,
   "packageManager": "bun",
