@@ -9,9 +9,7 @@
  */
 
 import type * as data_polar from "../data/polar.js";
-import type * as http from "../http.js";
 import type * as libs_polar from "../libs/polar.js";
-import type * as webhooks_polar from "../webhooks/polar.js";
 
 import type {
   ApiFromModules,
@@ -21,9 +19,7 @@ import type {
 
 declare const fullApi: ApiFromModules<{
   "data/polar": typeof data_polar;
-  http: typeof http;
   "libs/polar": typeof libs_polar;
-  "webhooks/polar": typeof webhooks_polar;
 }>;
 
 /**

@@ -1,12 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
-// import { api } from "convex/_generated/api";
-// import { useAction } from "convex/react";
+import { api } from "convex/_generated/api";
+import { useAction } from "convex/react";
 import {
   Check,
   Code2,
   Database,
   Gauge,
+  Heart,
   Lock,
   Rocket,
   ScanSearch,
@@ -74,19 +75,19 @@ const benefits = [
 ];
 
 function LandingPage() {
-  // const generateCheckoutUrl = useAction(api.data.polar.generateCheckoutUrl);
+  const generateCheckoutUrl = useAction(api.data.polar.generateCheckoutUrl);
 
-  // const handleCheckout = async () => {
-  //   try {
-  //     const checkoutUrl = await generateCheckoutUrl();
+  const handleCheckout = async () => {
+    try {
+      const checkoutUrl = await generateCheckoutUrl();
 
-  //     if (typeof window !== "undefined") {
-  //       window.location.href = checkoutUrl;
-  //     }
-  //   } catch (error) {
-  //     console.error("Checkout failed:", error);
-  //   }
-  // };
+      if (typeof window !== "undefined") {
+        window.location.href = checkoutUrl;
+      }
+    } catch (error) {
+      console.error("Checkout failed:", error);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -109,7 +110,6 @@ function LandingPage() {
           </div>
         </div>
       </header>
-
       {/* Hero Section */}
       <section className="relative overflow-hidden px-4 pt-16 sm:px-6 lg:px-8 lg:pt-24">
         <div className="mx-auto max-w-4xl text-center">
@@ -144,7 +144,6 @@ function LandingPage() {
           </div>
         </div>
       </section>
-
       {/* Features Section */}
       <section id="features" className="px-4 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
@@ -167,6 +166,50 @@ function LandingPage() {
                 </CardHeader>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Donation Section */}
+      <section className="px-4 py-16 sm:px-6 lg:px-8 bg-muted/50">
+        <div className="mx-auto max-w-4xl text-center">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            Support Our Work
+          </h2>
+          <p className="mt-4 text-lg text-muted-foreground">
+            If you find this project valuable, please consider supporting its
+            development.
+          </p>
+          <div className="mt-6">
+            <Button onClick={handleCheckout} size="lg">
+              <Heart className="fill-red-500 stroke-red-500" />
+              Donate via Polar
+            </Button>
+            <p className="mt-4 text-sm text-muted-foreground">
+              This project is open-source and free for everyone. Donations
+              aren’t required, but they help support:
+            </p>
+            <ul className="mt-6 list-disc list-inside pl-5 text-sm text-muted-foreground">
+              <li>Ongoing maintenance and improvements</li>
+              <li>New features and roadmap ideas</li>
+              <li>Faster bug fixes and issue support</li>
+              <li>The coffee that keeps development going</li>
+            </ul>
+            <p className="mt-8 text-sm text-muted-foreground">
+              Even a small contribution makes a difference and shows that this
+              work is valuable to you.
+            </p>
+            <div className="mt-12 border-t pt-8 text-sm text-muted-foreground">
+              <h3 className="text-sm font-semibold">Sponsor Perks</h3>
+              <p>
+                As a thank you, anyone who donates will receive a Verified
+                Sponsor role in our Discord community.
+              </p>
+              <p>
+                It’s a small way to recognize and appreciate the people who help
+                keep this project alive and growing.
+              </p>
+            </div>
           </div>
         </div>
       </section>
