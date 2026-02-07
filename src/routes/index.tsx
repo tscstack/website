@@ -23,10 +23,10 @@ import { Card, CardDescription, CardHeader } from "~/components/ui/card";
 import { seoMeta } from "~/utils/seo";
 
 export const Route = createFileRoute("/")({
-  component: LandingPage,
   head: ({ match }) => ({
     meta: seoMeta({ title: "default", url: match.fullPath })
-  })
+  }),
+  component: LandingPage
 });
 
 const features = [

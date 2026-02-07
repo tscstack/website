@@ -9,17 +9,10 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as LegalRouteRouteImport } from './routes/_legal/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DocsSplatRouteImport } from './routes/docs/$'
 import { Route as ApiSearchRouteImport } from './routes/api/search'
-import { Route as LegalTermsRouteImport } from './routes/_legal/terms'
-import { Route as LegalPrivacyRouteImport } from './routes/_legal/privacy'
 
-const LegalRouteRoute = LegalRouteRouteImport.update({
-  id: '/_legal',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -35,71 +28,39 @@ const ApiSearchRoute = ApiSearchRouteImport.update({
   path: '/api/search',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LegalTermsRoute = LegalTermsRouteImport.update({
-  id: '/terms',
-  path: '/terms',
-  getParentRoute: () => LegalRouteRoute,
-} as any)
-const LegalPrivacyRoute = LegalPrivacyRouteImport.update({
-  id: '/privacy',
-  path: '/privacy',
-  getParentRoute: () => LegalRouteRoute,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/privacy': typeof LegalPrivacyRoute
-  '/terms': typeof LegalTermsRoute
   '/api/search': typeof ApiSearchRoute
   '/docs/$': typeof DocsSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/privacy': typeof LegalPrivacyRoute
-  '/terms': typeof LegalTermsRoute
   '/api/search': typeof ApiSearchRoute
   '/docs/$': typeof DocsSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/_legal': typeof LegalRouteRouteWithChildren
-  '/_legal/privacy': typeof LegalPrivacyRoute
-  '/_legal/terms': typeof LegalTermsRoute
   '/api/search': typeof ApiSearchRoute
   '/docs/$': typeof DocsSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/privacy' | '/terms' | '/api/search' | '/docs/$'
+  fullPaths: '/' | '/api/search' | '/docs/$'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/privacy' | '/terms' | '/api/search' | '/docs/$'
-  id:
-    | '__root__'
-    | '/'
-    | '/_legal'
-    | '/_legal/privacy'
-    | '/_legal/terms'
-    | '/api/search'
-    | '/docs/$'
+  to: '/' | '/api/search' | '/docs/$'
+  id: '__root__' | '/' | '/api/search' | '/docs/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  LegalRouteRoute: typeof LegalRouteRouteWithChildren
   ApiSearchRoute: typeof ApiSearchRoute
   DocsSplatRoute: typeof DocsSplatRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/_legal': {
-      id: '/_legal'
-      path: ''
-      fullPath: '/'
-      preLoaderRoute: typeof LegalRouteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -121,40 +82,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiSearchRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_legal/terms': {
-      id: '/_legal/terms'
-      path: '/terms'
-      fullPath: '/terms'
-      preLoaderRoute: typeof LegalTermsRouteImport
-      parentRoute: typeof LegalRouteRoute
-    }
-    '/_legal/privacy': {
-      id: '/_legal/privacy'
-      path: '/privacy'
-      fullPath: '/privacy'
-      preLoaderRoute: typeof LegalPrivacyRouteImport
-      parentRoute: typeof LegalRouteRoute
-    }
   }
 }
 
-interface LegalRouteRouteChildren {
-  LegalPrivacyRoute: typeof LegalPrivacyRoute
-  LegalTermsRoute: typeof LegalTermsRoute
-}
-
-const LegalRouteRouteChildren: LegalRouteRouteChildren = {
-  LegalPrivacyRoute: LegalPrivacyRoute,
-  LegalTermsRoute: LegalTermsRoute,
-}
-
-const LegalRouteRouteWithChildren = LegalRouteRoute._addFileChildren(
-  LegalRouteRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  LegalRouteRoute: LegalRouteRouteWithChildren,
   ApiSearchRoute: ApiSearchRoute,
   DocsSplatRoute: DocsSplatRoute,
 }
