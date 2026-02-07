@@ -1,4 +1,4 @@
-export const BuiltWithIndieShip = () => {
+export const BuiltWithTSCStack = () => {
   return (
     <a
       href={`https://tscstack.vercel.app?ref=${import.meta.env.VITE_BASE_URL}`}

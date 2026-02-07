@@ -11,11 +11,12 @@ import {
   Rocket,
   ScanSearch,
   Sparkles,
+  Star,
   Wrench,
   Zap
 } from "lucide-react";
 
-import { BuiltWithIndieShip } from "~/components/built-with-indie-ship";
+import { BuiltWithTSCStack } from "~/components/built-with-tscstack";
 import { Button } from "~/components/ui/button";
 import { Card, CardDescription, CardHeader } from "~/components/ui/card";
 import { seoMeta } from "~/utils/seo";
@@ -95,32 +96,15 @@ function LandingPage() {
           <Link to="/" className="flex items-center gap-2 font-bold text-xl">
             <img src="/tscstack-logo.png" className="w-30" alt="TSC Stack" />
           </Link>
-          {/*<nav className="hidden md:flex items-center gap-8">
-            <a
-              href="#features"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Features
-            </a>
-            <a
-              href="#pricing"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Pricing
-            </a>
-            <a
-              href="#faq"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              FAQ
-            </a>
-          </nav>*/}
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="sm" asChild>
               <Link to="/docs/$">Docs</Link>
             </Button>
             <Button asChild>
-              <a href="https://github.com/tscstack/tscstack">GitHub</a>
+              <a href="https://github.com/tscstack/tscstack">
+                <Star className="fill-amber-400 border-2 stroke-amber-400" />
+                GitHub
+              </a>
             </Button>
           </div>
         </div>
@@ -144,7 +128,10 @@ function LandingPage() {
               <Link to="/docs/$">Read the Docs</Link>
             </Button>
             <Button asChild>
-              <a href="https://github.com/tscstack/tscstack">GitHub</a>
+              <a href="https://github.com/tscstack/tscstack">
+                <Star className="fill-amber-400 border-2 stroke-amber-400" />
+                GitHub
+              </a>
             </Button>
           </div>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground">
@@ -187,7 +174,7 @@ function LandingPage() {
       {/* Footer */}
       <footer className="border-t px-4 py-12 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-between gap-4">
-          <BuiltWithIndieShip />
+          <BuiltWithTSCStack />
 
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
             <a
