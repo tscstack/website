@@ -3,72 +3,77 @@ title: Folder Structure
 ---
 
 ```md
-├── biome.json
-├── bun.lock
-├── commitlint.config.mjs
-├── components.json
-├── convex
-│   ├── _generated
-│   ├── auth.config.ts
-│   ├── data
-│   │   ├── auth.ts
-│   │   └── polar.ts
-│   ├── http.ts
-│   ├── libs
-│   │   └── polar.ts
-│   ├── README.md
-│   ├── schema.ts
-│   ├── tsconfig.json
-│   └── webhooks
-│       ├── clerk.ts
-│       └── polar.ts
-├── cspell.json
-├── LICENSE
-├── package.json
-├── public
-├── README.md
-├── src
-│   ├── components
-│   │   ├── analytics
-│   │   │   └── posthog-provider.tsx
-│   │   ├── built-with-tscstack.tsx
-│   │   ├── error-component.tsx
-│   │   ├── form
-│   │   │   ├── button.tsx
-│   │   │   ├── index.tsx
-│   │   │   └── text-field.tsx
-│   │   ├── legal.tsx
-│   │   ├── not-found-component.tsx
-│   │   ├── theme-provider.tsx
-│   │   └── ui
-│   ├── env-client.d.ts
-│   ├── env-server.d.ts
-│   ├── functions
-│   ├── hooks
-│   │   ├── use-hash-state.ts
-│   │   ├── use-local-storage.ts
-│   │   └── use-media-query.ts
-│   ├── libs
-│   │   └── index.ts
-│   ├── router.tsx
-│   ├── routes
-│   │   ├── __root.tsx
-│   │   ├── _legal
-│   │   │   ├── privacy.tsx
-│   │   │   ├── route.tsx
-│   │   │   └── terms.tsx
-│   │   └── index.tsx
-│   ├── routeTree.gen.ts
-│   ├── styles.css
-│   └── utils
-│       ├── conffetti.ts
-│       ├── constants.ts
-│       ├── index.ts
-│       ├── schemas
-│       │   └── example.ts
-│       ├── seo.ts
-│       └── types.ts
-├── todo.md
-├── tsconfig.json
-└── vite.config.ts
+├── biome.json                    
+├── bun.lock                       
+├── commitlint.config.mjs          
+├── components.json               
+├── convex                        
+│   ├── _generated                
+│   ├── auth.config.ts             
+│   ├── data                       # Convex Queries/mutations
+│   │   ├── auth.ts                
+│   │   └── polar.ts              
+│   ├── http.ts                   
+│   ├── libs                       # Shared libraries
+│   │   └── polar.ts    
+│   ├── utils                      # Shared utilities
+│   │   └── index.ts   
+│   ├── README.md                  
+│   ├── schema.ts                  
+│   ├── tsconfig.json              
+│   └── webhooks                   # Webhook handlers
+│       ├── clerk.ts              
+│       └── polar.ts              
+├── cspell.json                    # Code spell checker (use ide extension)
+├── LICENSE                        
+├── package.json                   
+├── public                         
+├── README.md                     
+├── src                            
+│   ├── components                 # Reusable UI and feature components
+│   │   ├── analytics              # Analytics-related providers/components
+│   │   │   └── posthog-provider.tsx   # PostHog analytics provider wrapper
+│   │   ├── built-with-tscstack.tsx    # "Built with tscstack" component
+│   │   ├── error-component.tsx        # Error boundary component
+│   │   ├── form                   # TanStack Form wrappers
+│   │   │   ├── button.tsx         # Form button component
+│   │   │   ├── index.tsx          # Form barrel export
+│   │   │   └── text-field.tsx     # Text input field component
+│   │   ├── legal.tsx              # Shared legal page layout/component
+│   │   ├── not-found-component.tsx    # 404 not found component
+│   │   ├── theme-provider.tsx         # Theme context provider
+│   │   └── ui                     # Base shadcn/ui components
+│   ├── env-client.d.ts            # Client-side environment variable types
+│   ├── env-server.d.ts            # Server-side environment variable types
+│   ├── functions                  # TanStack Start server functions
+│   ├── hooks                      # Reusable React hooks
+│   │   ├── use-hash-state.ts      # Sync state with URL hash
+│   │   ├── use-local-storage.ts   # LocalStorage state persistence hook
+│   │   └── use-media-query.ts     # Media query detection hook
+│   ├── libs                       # Shared library utilities
+│   │   └── index.ts               
+│   ├── router.tsx                 
+│   ├── routes                     
+│   │   ├── __root.tsx             
+│   │   ├── _legal                
+│   │   │   ├── privacy.tsx        # Privacy policy page
+│   │   │   ├── route.tsx          # Legal layout wrapper route
+│   │   │   └── terms.tsx          # Terms of service page
+│   │   └── index.tsx              # Home page route
+│   ├── routeTree.gen.ts           # Auto-generated route tree (TanStack Router)
+│   ├── styles.css                 # Global Tailwind CSS styles
+│   └── utils                      # Shared utility functions and types
+│       ├── confetti.ts            # Confetti animation helper
+│       ├── constants.ts           # App-wide constants
+│       ├── index.ts               # Barrel export for utils
+│       ├── schemas                # Zod schemas and validation models
+│       ├── seo.ts                 # SEO metadata helpers
+│       └── types.ts               # Shared TypeScript types
+├── todo.md                        
+├── tsconfig.json                  
+└── vite.config.ts                 
 ```
+
+These folder structure is enough for most projects. You don't need to think where to put your files. For example, if you have to use a new library, you can put it in the `libs` folder. 
+
+How about for utility functions and types? Just put them in the `utils` folder for shared utility functions and `types.ts` for shared types. I do suggest don't always define and export every utility functions or types in `utils` and `types.ts`. Only use them when those functions and types are reused across multiple files. It is not a good practice to look for utility functions or types that are not used in multiple files. For example, if you have a utility function that is only used in one file, it is better to define it in that file instead of exporting it from `utils`. This makes the code more modular and easier to maintain.
