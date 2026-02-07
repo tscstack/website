@@ -2,4 +2,42 @@
 title: Environment Variables
 ---
 
-## WIP
+There is `.env.local.example` file in the root directory of the project. This file contains all the environment variables that are required for the initial setup of the project.
+
+Copy the contents of `.env.local.example` to `.env.local` and `.env.prod` and fill in the values.
+
+#### Type Safety
+
+There is `env-client.d.ts` and `env-server.d.ts` files in the root directory of the project. These files contain the type definitions for the environment variables.
+
+This is what `env-client.d.ts` looks like:
+
+```ts
+// env-client.d.ts
+interface ImportMetaEnv {
+  readonly VITE_BASE_URL: string;
+  readonly VITE_CONVEX_URL: string;
+  readonly VITE_POLAR_PRODUCT_ID: string;
+  readonly VITE_POSTHOG_KEY: string;
+  readonly VITE_POSTHOG_HOST: string;
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
+```
+
+If you have to add more environment variables, you can add them to `.env.local` and `.env.prod` and then add them to `env-client.d.ts` and `env-server.d.ts`.
+
+These will give you type safety when accessing environment variables in your code like `import.meta.env.VITE_BASE_URL` as `string` instead of `string | undefined`.
+
+`env-client.d.ts` is for client-side environment variables.
+
+`env-server.d.ts` is for server-side environment variables.
+
+**Tip:** If your public environment variables are also being used in the server-side code, also add them to `env-server.d.ts`. But don't add the server-side environment variables to `env-client.d.ts`.
+
+#### Resources
+
+- [TanStack Start's Environment Variables](https://tanstack.com/start/v3/docs/environment-variables)
+- [Vite's Environment Variables](https://vitejs.dev/guide/env-and-mode.html)
