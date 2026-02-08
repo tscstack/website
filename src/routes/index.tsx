@@ -174,7 +174,7 @@ function LandingPage() {
       <section className="px-4 py-16 sm:px-6 lg:px-8 bg-muted/50">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Support Our Work
+            Support the Project
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
             If you find this project valuable, please consider supporting its
