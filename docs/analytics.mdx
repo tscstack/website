@@ -2,4 +2,16 @@
 title: Analytics
 ---
 
-## WIP
+Adding analytics to your website is a great way to track user behavior and improve your website's performance. 
+
+You can use whatever analytics tool you prefer, such as Google Analytics or PostHog.
+
+PostHog is configured and already integrated into the codebase as default.
+
+See [`components/analytics/posthog-provider.tsx`](https://github.com/tscstack/tscstack/blob/main/src/components/analytics/posthog-provider.tsx)
+
+#### Usage
+
+Configure PostHog environment variables in `.env.local` and `.env.prod` files. And your part is done! We already wrapped it to the root layout.
+
+PostHog analytics is disabled when you are in local development. See the component file to learn more about how it is configured.
