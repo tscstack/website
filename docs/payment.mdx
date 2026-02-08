@@ -2,4 +2,51 @@
 title: Payment
 ---
 
-## WIP
+We already configured Polar payment system in the codebase with credit based system as the example. See [`convex/data/polar.ts`](https://github.com/tscstack/tscstack/blob/main/convex/data/polar.ts).
+
+It is a good practice to create a new user in Polar account when a user signs up via Clerk. So, there is Polar and Clerk webhooks in the `convex/webhooks` folder. In Clerk webhook, there is already configuration for creating a Polar account with Clerk user ID as `externalId`.
+
+So, we can get the Polar user ID from Clerk user ID. So that we can use it to grep that user's payment information easily.
+
+### Usages
+
+Here is the Convex `getActiveSubscription` query example function to get Polar user's active subscription:
+
+```ts
+export const getActiveSubscription = query({
+  args: {},
+  handler: async (ctx) => {
+    const identity = await requireIdentity(ctx);
+
+    const customerState = await polarClient.customers.getStateExternal({
+      externalId: identity.subject
+    });
+
+    const activeSubscription = customerState.activeSubscriptions[0];
+
+    return activeSubscription;
+  }
+});
+```
+
+There are also `generateCheckoutUrl` and `generatePortalUrl` action functions too in the codebase.
+
+Call those Convex action functions in the pricing page or checkout page.
+
+Here is the example of using `generateCheckoutUrl` action function in the pricing page:
+
+```ts
+const generateCheckoutUrl = useAction(api.data.polar.generateCheckoutUrl);
+
+const handleCheckout = async () => {
+  try {
+    const checkoutUrl = await generateCheckoutUrl();
+
+    if (typeof window !== "undefined") {
+      window.location.href = checkoutUrl;
+    }
+  } catch (error) {
+    console.error("Checkout failed:", error);
+  }
+};
+```

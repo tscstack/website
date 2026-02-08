@@ -32,7 +32,7 @@ const config = defineConfig({
       },
       sitemap: {
         enabled: true,
-        host: "tscstack.vercel.app"
+        host: process.env.VITE_BASE_URL
       }
     }),
     viteReact(),
