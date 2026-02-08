@@ -2,4 +2,50 @@
 title: Authentication
 ---
 
-## WIP
+You can use whatever authentication method that works with Convex. [See Convex's Authentication documentation](https://docs.convex.dev/auth) for what authentication methods are supported.
+
+Default auth provider is [Clerk](https://clerk.com/) which is the fastest and easiest way to add authentication to your app.
+
+`redirectIfAuthenticatedFn` and `requireAuthFn`TanStack Start server functions are already provided for you in the codebase [`src/functions/auth.ts`](https://github.com/tscstack/tscstack/blob/main/src/functions/auth.ts) file.You can use to protect your routes.
+
+Configure where you want to redirect users after they are authenticated or not authenticated in `.env.local` and `.env.prod` files Lear more about Clerk's [Redirects](https://clerk.com/docs/guides/development/customize-redirect-urls).
+
+Please also configure your redirect route in `redirectIfAuthenticatedFn` and `requireAuthFn` too.
+
+`requireAuthFn` gives you `userId`, `name`, and `email` object back.
+
+### Usages
+
+#### Protected Routes
+
+To protect, you can use `requireAuthFn` function. 
+
+If you provide `href` as a string, it will redirect to that URL after the user is authenticated.
+
+```ts
+// dashboard.tsx
+export const Route = createFileRoute("/dashboard")({
+  beforeLoad: async ({ location }) => {
+    return await requireAuthFn({ data: { href: location.href } });
+  },
+  component: RouteComponent
+});
+```
+
+#### Grouped Protected Routes
+
+We already provided `src/routes/_authenticated` folder which protects all routes inside it. You can also create your own folder and your own protection rules. If you don't need complicated methods, our original configuration is enough.
+
+#### Redirect if authenticated
+
+If you want to redirect users to a specific page after they are authenticated, you can use `redirectIfAuthenticatedFn` function.
+
+```ts
+// signin.tsx
+export const Route = createFileRoute("/signin")({
+  beforeLoad: async ({ location }) => {
+    return await redirectIfAuthenticatedFn();
+  },
+  component: RouteComponent
+});
+```
